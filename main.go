@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 //region methods
@@ -23,25 +24,30 @@ func areAnagrams(s1 string, s2 string) bool {
 	}
 	return true
 }
+
+func funWithAnagrams(ls []string) []string {
+	strList := ls
+
+	for i := 0; i < len(strList); i++{
+		for j := i + 1; j < len(strList); {
+			if areAnagrams(strList[i], strList[j]) {
+				strList = append(strList[:j], strList[j+1:]...)
+			}else{
+				j++
+			}
+		}
+	}
+	sort.Strings(strList)
+	return strList
+}
+
 //endregion
 
-func main(){
+func main() {
 	//region inputs
-	s1, s2, s3 := "ironicamente", "renacimiento", "renacimientos"
+	strList := []string{"framer","code", "doce", "ecod", "frame", "farmer"}	
 	//endregion
 
-	//region areAnagrams method calls
-	if areAnagrams(s1, s2) {
-		fmt.Println(s1,"and", s2, "are anagrams.")
-	} else {
-		fmt.Println(s1,"and", s2, "are not anagrams.")
-	}
-
-	if areAnagrams(s1, s3) {
-		fmt.Println(s1,"and", s3, "are anagrams.")
-	} else {
-		fmt.Println(s1,"and", s3, "are not anagrams.")
-	}
-	//endregion
-
+	fmt.Println("My original input:", strList)
+	fmt.Println("After funWithAnagrams:", funWithAnagrams(strList))
 }
