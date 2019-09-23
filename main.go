@@ -1,5 +1,6 @@
 package main
 
+<<<<<<< HEAD
 import (
 	"fmt"
 	"sort"
@@ -50,4 +51,8 @@ func main() {
 
 	fmt.Println("My original input:", strList)
 	fmt.Println("After funWithAnagrams:", funWithAnagrams(strList))
+=======
+func main(){
+	
+>>>>>>> origin
 }
