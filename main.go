@@ -5,11 +5,11 @@ import (
 	"sort"
 )
 
-//region methods
+// region methods
 
 func numberOfTokens(experyLimit int, commands [][]int) int {
 	tokens := make(map[int]int)
-	activeTokens, time := 0,  commands[len(commands)-1][2]
+	activeTokens, time := 0, commands[len(commands)-1][2]
 
 	for _, c := range commands {
 		if c[0] == 0 { // If it's a new Token command
@@ -27,12 +27,11 @@ func numberOfTokens(experyLimit int, commands [][]int) int {
 
 	for _, token := range tokens {
 		if token >= time {
-			activeTokens ++
+			activeTokens++
 		}
 	}
 	return activeTokens
 }
-
 
 func areAnagrams(s1 string, s2 string) bool {
 	count := make(map[rune]int)
@@ -56,11 +55,11 @@ func areAnagrams(s1 string, s2 string) bool {
 func funWithAnagrams(ls []string) []string {
 	strList := ls
 
-	for i := 0; i < len(strList); i++{
+	for i := 0; i < len(strList); i++ {
 		for j := i + 1; j < len(strList); {
 			if areAnagrams(strList[i], strList[j]) {
 				strList = append(strList[:j], strList[j+1:]...)
-			}else{
+			} else {
 				j++
 			}
 		}
@@ -69,25 +68,25 @@ func funWithAnagrams(ls []string) []string {
 	return strList
 }
 
-//endregion
+// endregion
 
 func main() {
-	//region inputs
-    
-    //funWithAnagrams Input
-	strList := []string{"framer","code", "doce", "ecod", "frame", "farmer"}	
+	// region inputs
 
-    //authenticationTokens Input
-    experyLimit := 4
+	// funWithAnagrams Input
+	strList := []string{"framer", "code", "doce", "ecod", "frame", "farmer"}
+
+	// authenticationTokens Input
+	experyLimit := 4
 	inputArray := [][]int{{0, 1, 1}, {0, 1, 3}, {0, 2, 2}, {1, 1, 5}, {1, 2, 7}, {1, 3, 7}}
-    
-    //endregion
 
-    //funWithAnagrams function call
+	// endregion
+
+	// funWithAnagrams function call
 	fmt.Println("My original input:", strList)
 	fmt.Println("After funWithAnagrams:", funWithAnagrams(strList))
 
-    //authenticationTokens function call
-	at:= numberOfTokens(experyLimit, inputArray)
+	// authenticationTokens function call
+	at := numberOfTokens(experyLimit, inputArray)
 	fmt.Println("There are", at, "active Tokens.")
 }
