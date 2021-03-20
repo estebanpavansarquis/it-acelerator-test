@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"it-acelerator-test/utils"
+	"it-acelerator-test/application/utils"
 )
 
 func main() {
