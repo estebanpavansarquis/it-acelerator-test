@@ -4,6 +4,10 @@ import (
 	"sort"
 )
 
+func GetFunWithAnagramsInput() []string {
+	return []string{"framer", "code", "doce", "ecod", "frame", "farmer"}
+}
+
 func areAnagrams(s1 string, s2 string) bool {
 	count := make(map[rune]int)
 	for _, c := range s1 {

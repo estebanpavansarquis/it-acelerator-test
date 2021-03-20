@@ -1,5 +1,24 @@
 package utils
 
+type NumberOfTokensInput struct {
+	ExperationLimit int
+	InputArray      [][]int
+}
+
+func GetNumberOfTokensInput() NumberOfTokensInput {
+	return NumberOfTokensInput{
+		ExperationLimit: 4,
+		InputArray: [][]int{
+			{0, 1, 1},
+			{0, 1, 3},
+			{0, 2, 2},
+			{1, 1, 5},
+			{1, 2, 7},
+			{1, 3, 7},
+		},
+	}
+}
+
 func NumberOfTokens(experyLimit int, commands [][]int) int {
 	tokens := make(map[int]int)
 	activeTokens, time := 0, commands[len(commands)-1][2]
