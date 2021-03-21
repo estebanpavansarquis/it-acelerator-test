@@ -4,9 +4,13 @@ import (
 	"sort"
 )
 
+var (
+	FunWithAnagramsInputA = []string{"framer", "code", "doce", "ecod", "frame", "farmer"}            // expected result: code frame framer
+	FunWithAnagramsInputB = []string{"roma", "ramo", "amor", "mora", "oran", "code", "doce", "cero"} // expected result: cero, code, oran, roma
+)
+
 func GetFunWithAnagramsInput() []string {
-	// return []string{"framer", "code", "doce", "ecod", "frame", "farmer"} // expected result: code frame framer
-	return []string{"roma", "ramo", "amor", "mora", "oran", "code", "doce", "cero"} // expected result: cero, code, oran, roma
+	return FunWithAnagramsInputA
 }
 
 func FunWithAnagrams(slice []string) []string {
