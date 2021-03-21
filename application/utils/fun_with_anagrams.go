@@ -5,12 +5,16 @@ import (
 )
 
 var (
-	FunWithAnagramsInputA = []string{"framer", "code", "doce", "ecod", "frame", "farmer"}            // expected result: code frame framer
-	FunWithAnagramsInputB = []string{"roma", "ramo", "amor", "mora", "oran", "code", "doce", "cero"} // expected result: cero, code, oran, roma
+	FunWithAnagramsInputs = [][]string{{"framer", "code", "doce", "ecod", "frame", "farmer"}, // expected result: code frame framer
+		{"roma", "ramo", "amor", "mora", "oran", "code", "doce", "cero"}} // expected result: cero, code, oran, roma
 )
 
-func GetFunWithAnagramsInput() []string {
-	return FunWithAnagramsInputA
+func GetFunWithAnagramsInput(inputNumber ...int) []string {
+	inputWanted := 0
+	if len(inputNumber) > 0 && inputNumber[0] >= 0 && inputNumber[0] <= len(FunWithAnagramsInputs) {
+		inputWanted = inputNumber[0]
+	}
+	return FunWithAnagramsInputs[inputWanted]
 }
 
 func FunWithAnagrams(slice []string) []string {
