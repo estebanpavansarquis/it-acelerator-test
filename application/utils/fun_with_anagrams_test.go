@@ -53,21 +53,22 @@ func TestFunWithAnagramsInput(t *testing.T) {
 	}
 }
 
-func BenchmarkFunWithAnagrams(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		FunWithAnagrams(GetFunWithAnagramsInput(), AreAnagrams)
- 	}
-}
-
-func BenchmarkFunWithAnagrams2(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		FunWithAnagrams(GetFunWithAnagramsInput(), AreAnagrams2)
+func BenchmarkAreAnagrams(b *testing.B) {
+	benchmarkingTable := []struct {
+		title    string
+		function func(string, string) bool
+	}{
+		{"AreAnagrams", AreAnagrams},
+		{"AreAnagrams2", AreAnagrams2},
+		{"AreAnagrams3", AreAnagrams3},
 	}
-}
 
-func BenchmarkFunWithAnagrams3(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		FunWithAnagrams(GetFunWithAnagramsInput(), AreAnagrams3)
+	for _, benchmarkingCase := range benchmarkingTable {
+		b.Run("Benchamark of: " + benchmarkingCase.title, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				FunWithAnagrams(GetFunWithAnagramsInput(), benchmarkingCase.function)
+			}
+		})
 	}
 }
 
