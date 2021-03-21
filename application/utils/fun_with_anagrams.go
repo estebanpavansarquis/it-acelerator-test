@@ -19,14 +19,14 @@ func GetFunWithAnagramsInput(inputNumber ...int) []string {
 	return FunWithAnagramsInputs[inputWanted]
 }
 
-func FunWithAnagrams(slice []string) []string {
+func FunWithAnagrams(slice []string, f func(string, string) bool ) []string {
 	// to avoid changes on the original slice
 	stringList := make([]string, len(slice))
 	copy(stringList, slice)
 
 	for i := 0; i < len(stringList); i++ {
 		for j := i + 1; j < len(stringList); {
-			if areAnagrams(stringList[i], stringList[j]) {
+			if f(stringList[i], stringList[j]) {
 				stringList = removeIndexFromSlice(stringList, j)
 			} else {
 				j++
@@ -37,7 +37,7 @@ func FunWithAnagrams(slice []string) []string {
 	return stringList
 }
 
-func areAnagrams(s1 string, s2 string) bool {
+func AreAnagrams(s1 string, s2 string) bool {
 	count := make(map[rune]int)
 	for _, c := range s1 {
 		count[c] = count[c] + 1
@@ -50,6 +50,42 @@ func areAnagrams(s1 string, s2 string) bool {
 	}
 	for _, c := range count {
 		if c != 0 {
+			return false
+		}
+	}
+	return true
+}
+
+func AreAnagrams2(s1 string, s2 string) bool {
+	count := make(map[rune]int)
+	for _, c := range s1 {
+		count[c] = count[c] + 1
+	}
+	for _, c := range s2 {
+		count[c] = count[c] - 1
+		if count[c] < 0 {
+			return false
+		}
+	}
+	if len(count) != 0 {
+		return false
+	}
+	return true
+}
+
+func AreAnagrams3(s1 string, s2 string) bool {
+	if len(s1) != len(s2) {
+		return false
+	}
+
+	count := make(map[rune]int)
+
+	for _, c := range s1 {
+		count[c] = count[c] + 1
+	}
+	for _, c := range s2 {
+		count[c] = count[c] - 1
+		if count[c] < 0 {
 			return false
 		}
 	}

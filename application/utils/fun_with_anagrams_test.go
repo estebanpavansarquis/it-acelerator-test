@@ -45,11 +45,29 @@ func TestFunWithAnagramsInput(t *testing.T) {
 
 	for _, testCase := range testingTable {
 		t.Run(testCase.title, func(t *testing.T) {
-			result := FunWithAnagrams(testCase.input)
+			result := FunWithAnagrams(testCase.input, AreAnagrams)
 			if !equals(result, testCase.expectedResult) {
 				t.Errorf("Test failed with input: %v, expected: %v; got: %v", testCase.input, testCase.expectedResult, result)
 			}
 		})
+	}
+}
+
+func BenchmarkFunWithAnagrams(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		FunWithAnagrams(GetFunWithAnagramsInput(), AreAnagrams)
+ 	}
+}
+
+func BenchmarkFunWithAnagrams2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		FunWithAnagrams(GetFunWithAnagramsInput(), AreAnagrams2)
+	}
+}
+
+func BenchmarkFunWithAnagrams3(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		FunWithAnagrams(GetFunWithAnagramsInput(), AreAnagrams3)
 	}
 }
 
