@@ -5,8 +5,10 @@ import (
 )
 
 var (
-	FunWithAnagramsInputs = [][]string{{"framer", "code", "doce", "ecod", "frame", "farmer"}, // expected result: code frame framer
-		{"roma", "ramo", "amor", "mora", "oran", "code", "doce", "cero"}} // expected result: cero, code, oran, roma
+	FunWithAnagramsInputs = [][]string{
+		{"framer", "code", "doce", "ecod", "frame", "farmer"},            // expected result: code frame framer
+		{"roma", "ramo", "amor", "mora", "oran", "code", "doce", "cero"}, // expected result: cero, code, oran, roma
+	}
 )
 
 func GetFunWithAnagramsInput(inputNumber ...int) []string {
