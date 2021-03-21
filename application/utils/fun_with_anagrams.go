@@ -4,8 +4,31 @@ import (
 	"sort"
 )
 
+var (
+	FunWithAnagramsInputA = []string{"framer", "code", "doce", "ecod", "frame", "farmer"}            // expected result: code frame framer
+	FunWithAnagramsInputB = []string{"roma", "ramo", "amor", "mora", "oran", "code", "doce", "cero"} // expected result: cero, code, oran, roma
+)
+
 func GetFunWithAnagramsInput() []string {
-	return []string{"framer", "code", "doce", "ecod", "frame", "farmer"}
+	return FunWithAnagramsInputA
+}
+
+func FunWithAnagrams(slice []string) []string {
+	// to avoid changes on the original slice
+	stringList := make([]string, len(slice))
+	copy(stringList, slice)
+
+	for i := 0; i < len(stringList); i++ {
+		for j := i + 1; j < len(stringList); {
+			if areAnagrams(stringList[i], stringList[j]) {
+				stringList = removeIndexFromSlice(stringList, j)
+			} else {
+				j++
+			}
+		}
+	}
+	sort.Strings(stringList)
+	return stringList
 }
 
 func areAnagrams(s1 string, s2 string) bool {
@@ -27,18 +50,6 @@ func areAnagrams(s1 string, s2 string) bool {
 	return true
 }
 
-func FunWithAnagrams(ls []string) []string {
-	strList := ls
-
-	for i := 0; i < len(strList); i++ {
-		for j := i + 1; j < len(strList); {
-			if areAnagrams(strList[i], strList[j]) {
-				strList = append(strList[:j], strList[j+1:]...)
-			} else {
-				j++
-			}
-		}
-	}
-	sort.Strings(strList)
-	return strList
+func removeIndexFromSlice(slice []string, index int) []string {
+	return append(slice[:index], slice[index+1:]...)
 }
