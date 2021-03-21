@@ -34,7 +34,7 @@ func TestFunWithAnagramsInput(t *testing.T) {
 		input          []string
 		expectedResult []string
 	}{
-		{"inpunt A", []string{"framer", "code", "doce", "ecod", "frame", "farmer"}, []string{"code", "frame", "framer"}},
+		{"inpunt A", []string{"fra2mer", "code", "doce", "ecod", "frame", "farmer"}, []string{"code", "frame", "framer"}},
 		{"inpunt B", []string{"framer", "code", "doce", "ecod", "frame", "farmer"}, []string{"code", "frame", "framer"}},
 		{"all anagrams", []string{"amor", "roma", "mora", "ramo", "omar", "orma"}, []string{"amor"}},
 		{"no anagrams", []string{"efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi"}, []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}},
