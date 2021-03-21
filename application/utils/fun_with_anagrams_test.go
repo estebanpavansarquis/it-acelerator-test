@@ -10,19 +10,21 @@ func TestGetFunWithAnagramsInput(t *testing.T) {
 		input          []int
 		expectedResult []string
 	}{
-		{"Input 0", []int{0}, FunWithAnagramsInputs[0]},
-		{"Input 1", []int{1}, FunWithAnagramsInputs[1]},
-		{"Input param negative", []int{-1}, FunWithAnagramsInputs[0]},
-		{"Input param not available", []int{5}, FunWithAnagramsInputs[0]},
-		{"Input param nil", []int{}, FunWithAnagramsInputs[0]},
-		{"Many input params", []int{1, 2, 3, 4}, FunWithAnagramsInputs[1]},
+		{"input 0", []int{0}, FunWithAnagramsInputs[0]},
+		{"input 1", []int{1}, FunWithAnagramsInputs[1]},
+		{"input param negative", []int{-1}, FunWithAnagramsInputs[0]},
+		{"input param not available", []int{5}, FunWithAnagramsInputs[0]},
+		{"input param nil", []int{}, FunWithAnagramsInputs[0]},
+		{"many input params", []int{1, 2, 3, 4}, FunWithAnagramsInputs[1]},
 	}
 
 	for _, testCase := range testingTable {
-		result := GetFunWithAnagramsInput(testCase.input...)
-		if !equals(result, testCase.expectedResult) {
-			t.Errorf("Test case \"%v\" failed with input: %v, expected: %v; got: %v", testCase.title, testCase.input, testCase.expectedResult, result)
-		}
+		t.Run(testCase.title, func(t *testing.T) {
+			result := GetFunWithAnagramsInput(testCase.input...)
+			if !equals(result, testCase.expectedResult) {
+				t.Errorf("Test case failed with input: %v, expected: %v; got: %v", testCase.input, testCase.expectedResult, result)
+			}
+		})
 	}
 }
 
@@ -32,20 +34,22 @@ func TestFunWithAnagramsInput(t *testing.T) {
 		input          []string
 		expectedResult []string
 	}{
-		{"Inpunt A", []string{"framer", "code", "doce", "ecod", "frame", "farmer"}, []string{"code", "frame", "framer"}},
-		{"Inpunt B", []string{"framer", "code", "doce", "ecod", "frame", "farmer"}, []string{"code", "frame", "framer"}},
-		{"All anagrams", []string{"amor", "roma", "mora", "ramo", "omar", "orma"}, []string{"amor"}},
-		{"No anagrams", []string{"efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi"}, []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}},
-		{"No anagrams and ordered", []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}, []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}},
-		{"List with only one element", []string{"qwerty"}, []string{"qwerty"}},
-		{"Empty list", []string{}, []string{}},
+		{"inpunt A", []string{"framer", "code", "doce", "ecod", "frame", "farmer"}, []string{"code", "frame", "framer"}},
+		{"inpunt B", []string{"framer", "code", "doce", "ecod", "frame", "farmer"}, []string{"code", "frame", "framer"}},
+		{"all anagrams", []string{"amor", "roma", "mora", "ramo", "omar", "orma"}, []string{"amor"}},
+		{"no anagrams", []string{"efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi"}, []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}},
+		{"no anagrams and ordered", []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}, []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}},
+		{"list with only one element", []string{"qwerty"}, []string{"qwerty"}},
+		{"empty list", []string{}, []string{}},
 	}
 
 	for _, testCase := range testingTable {
-		result := FunWithAnagrams(testCase.input)
-		if !equals(result, testCase.expectedResult) {
-			t.Errorf("Test case \"%v\" failed with input: %v, expected: %v; got: %v", testCase.title, testCase.input, testCase.expectedResult, result)
-		}
+		t.Run(testCase.title, func(t *testing.T) {
+			result := FunWithAnagrams(testCase.input)
+			if !equals(result, testCase.expectedResult) {
+				t.Errorf("Test failed with input: %v, expected: %v; got: %v", testCase.input, testCase.expectedResult, result)
+			}
+		})
 	}
 }
 
