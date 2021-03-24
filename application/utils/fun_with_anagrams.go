@@ -19,7 +19,7 @@ func GetFunWithAnagramsInput(inputNumber ...int) []string {
 	return FunWithAnagramsInputs[inputWanted]
 }
 
-func FunWithAnagrams(slice []string, f func(string, string) bool ) []string {
+func FunWithAnagrams(slice []string, f func(string, string) bool) []string {
 	// to avoid changes on the original slice
 	stringList := make([]string, len(slice))
 	copy(stringList, slice)
