@@ -4,6 +4,20 @@ import (
 	"testing"
 )
 
+var testingTable = []struct {
+	title          string
+	input          []string
+	expectedResult []string
+}{
+	{"inpunt A", []string{"framer", "code", "doce", "ecod", "frame", "farmer"}, []string{"code", "frame", "framer"}},
+	{"inpunt B", []string{"framer", "code", "doce", "ecod", "frame", "farmer"}, []string{"code", "frame", "framer"}},
+	{"all anagrams", []string{"amor", "roma", "mora", "ramo", "omar", "orma"}, []string{"amor"}},
+	{"no anagrams", []string{"efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi"}, []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}},
+	{"no anagrams and ordered", []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}, []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}},
+	{"list with only one element", []string{"qwerty"}, []string{"qwerty"}},
+	{"empty list", []string{}, []string{}},
+}
+
 func TestGetFunWithAnagramsInput(t *testing.T) {
 	testingTable := []struct {
 		title          string
@@ -29,28 +43,36 @@ func TestGetFunWithAnagramsInput(t *testing.T) {
 }
 
 func TestFunWithAnagramsInput(t *testing.T) {
-	testingTable := []struct {
-		title          string
-		input          []string
-		expectedResult []string
-	}{
-		{"inpunt A", []string{"framer", "code", "doce", "ecod", "frame", "farmer"}, []string{"code", "frame", "framer"}},
-		{"inpunt B", []string{"framer", "code", "doce", "ecod", "frame", "farmer"}, []string{"code", "frame", "framer"}},
-		{"all anagrams", []string{"amor", "roma", "mora", "ramo", "omar", "orma"}, []string{"amor"}},
-		{"no anagrams", []string{"efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi"}, []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}},
-		{"no anagrams and ordered", []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}, []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}},
-		{"list with only one element", []string{"qwerty"}, []string{"qwerty"}},
-		{"empty list", []string{}, []string{}},
-	}
-
 	for _, testCase := range testingTable {
 		t.Run(testCase.title, func(t *testing.T) {
-			result := FunWithAnagrams(testCase.input)
+			result := FunWithAnagrams(testCase.input, AreAnagrams)
 			if !equals(result, testCase.expectedResult) {
 				t.Errorf("Test failed with input: %v, expected: %v; got: %v", testCase.input, testCase.expectedResult, result)
 			}
 		})
 	}
+}
+
+func BenchmarkAreAnagrams(b *testing.B) {
+	benchmarkingTable := []struct {
+		title    string
+		function func(string, string) bool
+	}{
+		{"AreAnagrams", AreAnagrams},
+		{"AreAnagrams2", AreAnagrams2},
+		{"AreAnagrams3", AreAnagrams3},
+	}
+
+	for _, benchmarkingCase := range benchmarkingTable {
+		for _, testingCase := range testingTable {
+			b.Run(benchmarkingCase.title+"_with_input_"+testingCase.title, func(b *testing.B) {
+				for i := 0; i < b.N; i++ {
+					FunWithAnagrams(testingCase.input, benchmarkingCase.function)
+				}
+			})
+		}
+	}
+
 }
 
 func equals(slice1 []string, slice2 []string) bool {

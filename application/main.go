@@ -11,7 +11,7 @@ func main() {
 	// funWithAnagrams function call
 	funWithAnagramsInput := utils.GetFunWithAnagramsInput()
 	fmt.Println("\nMy funWithAnagrams original input:", funWithAnagramsInput)
-	fmt.Println("Result of running funWithAnagrams:", utils.FunWithAnagrams(funWithAnagramsInput))
+	fmt.Println("Result of running funWithAnagrams:", utils.FunWithAnagrams(funWithAnagramsInput, utils.AreAnagrams))
 
 	// authenticationTokens function call
 	numberOfTokensInput := utils.GetNumberOfTokensInput()
