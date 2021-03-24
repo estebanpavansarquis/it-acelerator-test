@@ -1,7 +1,6 @@
 # it-acelerator-test
 
-Solution for the Back-End IT-Acelerator Test
-
+Solution for the Back-End IT-Acelerator Test 2019/2020 & Bootcamp-IT 2021
 
 ## Fun with Anagrams
 
@@ -29,3 +28,8 @@ commands sorted by ascending by their T parameter, find the number of tokens tha
 
 **Function description:**
 Develop the numberOfTokens() function. It must return an integer that denotes the number of tokens that exist at the end of the command stream.
+
+## Most repeted letter
+Given a string as input, create a function that prints a message with the most repeted letter and the number of times repeated.
+- The input can contain spaces and special characters.
+- The result must ignore casing, spaces and special charaters.

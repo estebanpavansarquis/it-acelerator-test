@@ -6,8 +6,15 @@ import (
 
 var (
 	FunWithAnagramsInputs = [][]string{
-		{"framer", "code", "doce", "ecod", "frame", "farmer"},            // expected result: code frame framer
-		{"roma", "ramo", "amor", "mora", "oran", "code", "doce", "cero"}, // expected result: cero, code, oran, roma
+
+		// expected result: code frame framer
+		{"framer", "code", "doce", "ecod", "frame", "farmer"},
+
+		// expected result: cero, code, oran, roma
+		{"roma", "ramo", "amor", "mora", "oran", "code", "doce", "cero"},
+
+		// expected result: abc, amor, bcd, cde, code, def, efg, fgh, frame, framer, ghi, hij, qwerty
+		{"framer", "code", "doce", "ecod", "frame", "farmer", "amor", "roma", "mora", "ramo", "omar", "orma", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "doce", "ecod", "frame", "farmer", "amor", "roma", "mora", "ramo", "omar", "orma", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "doce", "ecod", "frame", "farmer", "amor", "roma", "mora", "ramo", "omar", "orma", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "qwerty"},
 	}
 )
 
@@ -19,14 +26,14 @@ func GetFunWithAnagramsInput(inputNumber ...int) []string {
 	return FunWithAnagramsInputs[inputWanted]
 }
 
-func FunWithAnagrams(slice []string, f func(string, string) bool) []string {
+func FunWithAnagrams(slice []string) []string {
 	// to avoid changes on the original slice
 	stringList := make([]string, len(slice))
 	copy(stringList, slice)
 
 	for i := 0; i < len(stringList); i++ {
 		for j := i + 1; j < len(stringList); {
-			if f(stringList[i], stringList[j]) {
+			if areAnagrams(stringList[i], stringList[j]) {
 				stringList = removeIndexFromSlice(stringList, j)
 			} else {
 				j++
@@ -37,43 +44,7 @@ func FunWithAnagrams(slice []string, f func(string, string) bool) []string {
 	return stringList
 }
 
-func AreAnagrams(s1 string, s2 string) bool {
-	count := make(map[rune]int)
-	for _, c := range s1 {
-		count[c] = count[c] + 1
-	}
-	for _, c := range s2 {
-		count[c] = count[c] - 1
-		if count[c] < 0 {
-			return false
-		}
-	}
-	for _, c := range count {
-		if c != 0 {
-			return false
-		}
-	}
-	return true
-}
-
-func AreAnagrams2(s1 string, s2 string) bool {
-	count := make(map[rune]int)
-	for _, c := range s1 {
-		count[c] = count[c] + 1
-	}
-	for _, c := range s2 {
-		count[c] = count[c] - 1
-		if count[c] < 0 {
-			return false
-		}
-	}
-	if len(count) != 0 {
-		return false
-	}
-	return true
-}
-
-func AreAnagrams3(s1 string, s2 string) bool {
+func areAnagrams(s1 string, s2 string) bool {
 	if len(s1) != len(s2) {
 		return false
 	}
