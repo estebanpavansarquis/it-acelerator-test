@@ -16,6 +16,7 @@ var testingTable = []struct {
 	{"no anagrams and ordered", []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}, []string{"abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij"}},
 	{"list with only one element", []string{"qwerty"}, []string{"qwerty"}},
 	{"empty list", []string{}, []string{}},
+	{"big list", []string{"framer", "code", "doce", "ecod", "frame", "farmer", "amor", "roma", "mora", "ramo", "omar", "orma", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "code", "doce", "ecod", "frame", "farmer", "efg", "fgh", "abc", "def", "bcd", "cde", "hij", "ghi", "qwerty"}, []string{}},
 }
 
 func TestGetFunWithAnagramsInput(t *testing.T) {
@@ -45,7 +46,7 @@ func TestGetFunWithAnagramsInput(t *testing.T) {
 func TestFunWithAnagramsInput(t *testing.T) {
 	for _, testCase := range testingTable {
 		t.Run(testCase.title, func(t *testing.T) {
-			result := FunWithAnagrams(testCase.input, AreAnagrams)
+			result := FunWithAnagrams(testCase.input)
 			if !equals(result, testCase.expectedResult) {
 				t.Errorf("Test failed with input: %v, expected: %v; got: %v", testCase.input, testCase.expectedResult, result)
 			}
@@ -58,21 +59,37 @@ func BenchmarkAreAnagrams(b *testing.B) {
 		title    string
 		function func(string, string) bool
 	}{
-		{"AreAnagrams", AreAnagrams},
-		{"AreAnagrams2", AreAnagrams2},
-		{"AreAnagrams3", AreAnagrams3},
+		{"AreAnagrams", areAnagrams},
 	}
 
 	for _, benchmarkingCase := range benchmarkingTable {
 		for _, testingCase := range testingTable {
 			b.Run(benchmarkingCase.title+"_with_input_"+testingCase.title, func(b *testing.B) {
 				for i := 0; i < b.N; i++ {
-					FunWithAnagrams(testingCase.input, benchmarkingCase.function)
+					FunWithAnagrams(testingCase.input)
 				}
 			})
 		}
 	}
+}
 
+func BenchmarkFunWithAnagrams(b *testing.B) {
+	benchmarkingTable := []struct {
+		title    string
+		function func(slice []string) []string
+	}{
+		{"FunWithAnagrams", FunWithAnagrams},
+	}
+
+	for _, benchmarkingCase := range benchmarkingTable {
+		for _, testingCase := range testingTable {
+			b.Run(benchmarkingCase.title+"_with_input_"+testingCase.title, func(b *testing.B) {
+				for i := 0; i < b.N; i++ {
+					benchmarkingCase.function(testingCase.input)
+				}
+			})
+		}
+	}
 }
 
 func equals(slice1 []string, slice2 []string) bool {
