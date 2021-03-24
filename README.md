@@ -12,13 +12,13 @@ Given an array of strings, remove each string that is an anagram of an earliear 
  **Function description:**
 Develop the funWithAnagrams() function. It must return a list of strings in alphabetical order, ascending.
 
+> Benchmarking results of the different algorithms implemented -> [Link](https://docs.google.com/spreadsheets/d/188v-5ZI-q7DxTML3ozlEDL9dRH8XwsQeCA1-SJ3pnIY/edit?usp=sharing)
+
 ## Authentication Tokens
 
 In a standard transaction system, users are authenticated using authentication tokens. Each token has an expiry, denoted by expiryLimit. Each token expires automatically after expiryLimit minutes pass after it was reset. When reset, the expiry time is resets to expiryLimit minutes from the time of reset.
 - A token can be reset any number of times.
 - Once a token expires it can no longer be accessed, and a reset issued to it will be ignored.
-
-> Benchmarking results of the different algorithms implemented -> [Link](https://docs.google.com/spreadsheets/d/188v-5ZI-q7DxTML3ozlEDL9dRH8XwsQeCA1-SJ3pnIY/edit?usp=sharing)
 
 **Note:**
 - Get is represented by 0 and Reset by 1.
