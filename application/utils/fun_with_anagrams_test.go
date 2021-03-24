@@ -64,7 +64,7 @@ func BenchmarkAreAnagrams(b *testing.B) {
 	}
 
 	for _, benchmarkingCase := range benchmarkingTable {
-		for _, testingCase  := range testingTable {
+		for _, testingCase := range testingTable {
 			b.Run(benchmarkingCase.title+"_with_input_"+testingCase.title, func(b *testing.B) {
 				for i := 0; i < b.N; i++ {
 					FunWithAnagrams(testingCase.input, benchmarkingCase.function)
