@@ -18,6 +18,8 @@ In a standard transaction system, users are authenticated using authentication t
 - A token can be reset any number of times.
 - Once a token expires it can no longer be accessed, and a reset issued to it will be ignored.
 
+> Benchmarking results of the different algorithms implemented -> [Link](https://docs.google.com/spreadsheets/d/188v-5ZI-q7DxTML3ozlEDL9dRH8XwsQeCA1-SJ3pnIY/edit?usp=sharing)
+
 **Note:**
 - Get is represented by 0 and Reset by 1.
 - The current time, in time end, is the maximun time of all commands.
