@@ -66,7 +66,3 @@ func areAnagrams(s1 string, s2 string) bool {
 func removeIndexFromSlice(slice []string, index int) []string {
 	return append(slice[:index], slice[index+1:]...)
 }
-
-func TestFunc(){
-	print("asd")
-}

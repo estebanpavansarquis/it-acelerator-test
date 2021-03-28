@@ -22,5 +22,4 @@ func main() {
 	fmt.Println("\nMy mostRepeatedLetter original input:", utils.MostRepeatedLetterInput)
 	fmt.Println(utils.MostRepeatedLetter(utils.MostRepeatedLetterInput))
 
-	utils.TestFunc()
 }
