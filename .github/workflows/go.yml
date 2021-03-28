@@ -26,4 +26,13 @@ jobs:
 
     - name: Codecov
       uses: codecov/codecov-action@v1.3.1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        files: ./coverage1.xml,./coverage2.xml # optional
+        directory: ./coverage/reports/
+        flags: unittests # optional
+        name: codecov-umbrella # optional
+        fail_ci_if_error: true # optional (default = false)
+        path_to_write_report: ./coverage/codecov_report.txt
+        verbose: true # optional (default = false
 
