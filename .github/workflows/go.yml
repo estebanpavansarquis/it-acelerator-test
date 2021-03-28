@@ -1,4 +1,4 @@
-name: Go
+name: CI
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
 
+  # The “build” workflow
   build:
     runs-on: ubuntu-latest
     steps:
@@ -18,8 +19,18 @@ jobs:
       with:
         go-version: 1.14
 
+    - name: Install dependencies
+      run: |
+        go version
+        go get -u golang.org/x/lint/golint
+
     - name: Build
       run: go build -v ./...
+
+    - name: Run vet & lint
+      run: |
+        go vet ./...
+        golint ./...
 
     - name: Test
       run: go test -v ./...
