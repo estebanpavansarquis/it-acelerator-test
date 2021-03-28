@@ -1,5 +1,7 @@
 # it-acelerator-test
 
+[![codecov](https://codecov.io/gh/estebanpavansarquis/it-acelerator-test/branch/develop/graph/badge.svg?token=31CSEE9ZRH)](https://codecov.io/gh/estebanpavansarquis/it-acelerator-test)
+
 Solution for the Back-End IT-Acelerator Test 2019/2020 & Bootcamp-IT 2021
 
 ## Fun with Anagrams
