@@ -7,6 +7,8 @@ import (
 
 const MostRepeatedLetterInput = "Hola, mi nombre es Ariel, soy una sirena, vivo bajo el mar"
 
+//comentario malardo
+
 func MostRepeatedLetter(s string) string {
 	letterCounter := make(map[rune]int)
 	max := struct {
