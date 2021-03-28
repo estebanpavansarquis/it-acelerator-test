@@ -9,13 +9,8 @@ jobs:
       - checkout
       - run:
           name: Run tests and coverage
-          command: go test -race -coverprofile=coverage.txt -covermode=atomic
-            - run:
-                name: Upload coverage to Codecov
-                command: bash <(curl -s https://codecov.io/bash)
+          command: go test ./... -race -coverprofile=coverage.txt -covermode=atomic
+      - run:
+          name: Upload coverage to Codecov
+          command: bash <(curl -s https://codecov.io/bash) -t e813b345-e14d-40e8-a841-1a270d9c6855
 
-workflow:
-  version: 2.1
-  build-test:
-    jobs:
-      - build
