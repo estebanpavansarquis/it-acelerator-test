@@ -29,3 +29,7 @@ func MostRepeatedLetter(s string) string {
 
 	return fmt.Sprintf("La letra que más se repite es la %c con %d repeticiones", max.letter, max.count)
 }
+
+func notUsed(){
+	print("I am never used!")
+}
