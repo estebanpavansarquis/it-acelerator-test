@@ -27,6 +27,12 @@ jobs:
     - name: Build
       run: go build -v ./...
 
+    - name: Fmt
+      uses: Jerome1337/gofmt-action@v1.0.4
+      with:
+        gofmt-path: './application'
+        gofmt-flags: '-l -d'
+
     - name: Vet
       run: go vet ./...
 
