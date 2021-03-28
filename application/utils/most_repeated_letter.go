@@ -7,6 +7,8 @@ import (
 
 const MostRepeatedLetterInput = "Hola, mi nombre es Ariel, soy una sirena, vivo bajo el mar"
 
+//comentario malardo
+
 func MostRepeatedLetter(s string) string {
 	letterCounter := make(map[rune]int)
 	max := struct {
@@ -26,4 +28,8 @@ func MostRepeatedLetter(s string) string {
 	}
 
 	return fmt.Sprintf("La letra que más se repite es la %c con %d repeticiones", max.letter, max.count)
+}
+
+func notUsed(){
+	print("I am never used!")
 }
