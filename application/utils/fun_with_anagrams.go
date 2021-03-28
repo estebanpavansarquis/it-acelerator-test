@@ -26,9 +26,10 @@ func GetFunWithAnagramsInput(inputNumber ...int) []string {
 	return FunWithAnagramsInputs[inputWanted]
 }
 
-func FunWithAnagrams(slice []string) []string {
+//
+func FunWithAnagrams (slice []string) []string    {
 	// to avoid changes on the original slice
-	stringList := make([]string, len(slice))
+		stringList := make([]string, len(slice))
 	copy(stringList, slice)
 
 	for i := 0; i < len(stringList); i++ {
@@ -40,7 +41,7 @@ func FunWithAnagrams(slice []string) []string {
 			}
 		}
 	}
-	sort.Strings(stringList)
+		sort.Strings(stringList)
 	return stringList
 }
 
