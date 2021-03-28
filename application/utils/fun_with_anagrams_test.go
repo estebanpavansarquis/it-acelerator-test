@@ -59,7 +59,7 @@ func BenchmarkAreAnagrams(b *testing.B) {
 		title    string
 		function func(string, string) bool
 	}{
-		{"AreAnagrams", areAnagrams},
+		{"AreAnagrams", AreAnagrams},
 	}
 
 	for _, benchmarkingCase := range benchmarkingTable {

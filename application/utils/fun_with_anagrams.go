@@ -27,14 +27,14 @@ func GetFunWithAnagramsInput(inputNumber ...int) []string {
 }
 
 //
-func FunWithAnagrams (slice []string) []string    {
+func FunWithAnagrams(slice []string) []string {
 	// to avoid changes on the original slice
-		stringList := make([]string, len(slice))
+	stringList := make([]string, len(slice))
 	copy(stringList, slice)
 
 	for i := 0; i < len(stringList); i++ {
 		for j := i + 1; j < len(stringList); {
-			if areAnagrams(stringList[i], stringList[j]) {
+			if AreAnagrams(stringList[i], stringList[j]) {
 				stringList = removeIndexFromSlice(stringList, j)
 			} else {
 				j++
@@ -45,7 +45,7 @@ func FunWithAnagrams (slice []string) []string    {
 	return stringList
 }
 
-func areAnagrams(s1 string, s2 string) bool {
+func AreAnagrams(s1 string, s2 string) bool {
 	if len(s1) != len(s2) {
 		return false
 	}
